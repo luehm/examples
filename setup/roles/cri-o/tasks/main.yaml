@@ -1,26 +1,25 @@
 ---
-- name: gpg key
+- name: gpg keys
   ansible.builtin.apt_key:
-    url: "{{ crio_repo }}/{{ crio_os }}/Release.key"
+    url: "{{ item }}"
     state: present
+  loop:
+    - "{{ k8s_repo }}/deb/Release.key"
+    - "{{ crio_repo }}/deb/Release.key"
 
-- name: kubic repository
+- name: repos
   ansible.builtin.apt_repository:
-    repo: "deb {{ crio_repo }}/{{ crio_os }}/ /"
+    repo: "deb {{ item.repo }} /"
     state: present
-    filename: kubic
-
-- name: cri-o repository
-  ansible.builtin.apt_repository:
-    repo: "deb {{ crio_repo }}:/cri-o:/{{ crio_version }}/{{ crio_os }}/ /"
-    state: present
-    filename: kubic.cri-o
+    filename: "{{ item.name }}"
+  loop:
+    - { name: "kubernetes", repo: "{{ k8s_repo }}/deb/" }
+    - { name: "cri-o", repo: "{{ crio_repo }}/deb/" }
 
 - name: install
   ansible.builtin.apt:
     name:
       - cri-o
-      - cri-o-runc
     update_cache: yes
 
 - name: skopeo
