@@ -2,6 +2,7 @@
 metadata:
   name: busybox
   namespace: crio
+  uid: d6bc9424-35dc-438e-8368-01f1d40ce69d
 linux:
   security_context:
     namespace_options:

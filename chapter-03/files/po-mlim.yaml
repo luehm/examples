@@ -2,6 +2,7 @@
 metadata:
   name: stress2
   namespace: crio
+  uid: a5400ec3-6d61-4b42-8db1-61d40459ff49
 linux:
   cgroup_parent: pod.slice
   security_context:

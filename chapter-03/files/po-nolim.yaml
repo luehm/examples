@@ -2,6 +2,7 @@
 metadata:
   name: stress
   namespace: crio
+  uid: d090cfa2-86b7-4e03-840e-930e6de13b25
 linux:
   security_context:
     namespace_options:
