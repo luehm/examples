@@ -6,3 +6,8 @@ image:
 args:
   - "/bin/sleep"
   - "36000"
+linux:
+  security_context:
+    capabilities:
+      add_capabilities:
+        - NET_RAW

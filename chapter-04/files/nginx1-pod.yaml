@@ -2,3 +2,4 @@
 metadata:
   name: nginx1
   namespace: crio
+  uid: c01aa4d3-d8b2-4020-a945-325e0dbe1761
